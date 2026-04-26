@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Honeypot Agent</title>
+  <style>
+    body {
+      width: 350px;
+      min-height: 400px;
+      margin: 0;
+      padding: 16px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+      padding-bottom: 10px;
+    }
+    .header h2 {
+      margin: 0;
+      font-size: 18px;
+      background: linear-gradient(90deg, #4285F4, #9B72CB, #D96570);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    textarea {
+      width: 100%;
+      height: 80px;
+      padding: 10px;
+      box-sizing: border-box;
+      border-radius: 8px;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      background: rgba(30, 41, 59, 0.8);
+      color: white;
+      resize: none;
+      margin-bottom: 10px;
+      font-family: inherit;
+    }
+    textarea:focus {
+      outline: none;
+      border-color: #38bdf8;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: none;
+      background: linear-gradient(135deg, #38bdf8 0%, #3b82f6 100%);
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      margin-bottom: 20px;
+      transition: opacity 0.2s;
+    }
+    button:hover {
+      opacity: 0.9;
+    }
+    button:disabled {
+      background: #475569;
+      cursor: not-allowed;
+    }
+    .chat-container {
+      max-height: 250px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .msg {
+      padding: 10px;
+      border-radius: 12px;
+      font-size: 13px;
+      max-width: 85%;
+      word-wrap: break-word;
+    }
+    .msg.user {
+      align-self: flex-end;
+      background: #3b82f6;
+      color: white;
+    }
+    .msg.bot {
+      align-self: flex-start;
+      background: rgba(30, 41, 59, 0.8);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+    .alert {
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 12px;
+      display: none;
+    }
+    .alert.scam {
+      display: block;
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid #ef4444;
+      color: #ef4444;
+    }
+    #loading {
+      display: none;
+      text-align: center;
+      font-size: 12px;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z" fill="#38bdf8"/>
+    </svg>
+    <h2>Deploy Agent</h2>
+  </div>
+
+  <textarea id="messageInput" placeholder="Paste suspicious message here..."></textarea>
+  <button id="sendBtn">Deploy Honeypot Agent</button>
+
+  <div id="loading">Agent is analyzing...</div>
+
+  <div id="alertBox" class="alert">
+    <strong>🚨 Scam Payload Detected</strong><br>
+    <span id="intelData"></span>
+  </div>
+
+  <div class="chat-container" id="chatBox">
+    <!-- Messages will appear here -->
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
