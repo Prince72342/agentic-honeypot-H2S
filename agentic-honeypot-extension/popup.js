@@ -23,7 +23,7 @@ document.getElementById('sendBtn').addEventListener('click', async () => {
   alertBox.classList.remove('scam');
 
   try {
-    const response = await fetch('http://localhost:8000/honeypot', {
+    const response = await fetch('https://agentic-honeypot-h2s.onrender.com/honeypot', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
