@@ -1,0 +1,413 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(135deg, #eef2ff 0%, #f9fafb 48%, #f3e8ff 100%);
+  color: #1e293b;
+}
+
+/* SCROLLBAR STYLING */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e2e8f0;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* RESPONSIVE UTILITIES */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+
+  button {
+    font-size: 14px;
+  }
+
+  input {
+    font-size: 14px;
+  }
+
+  /* Prevent zoom on input focus on mobile */
+  input,
+  button,
+  textarea {
+    font-size: 16px;
+  }
+}
+
+/* ANIMATIONS */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.typing-indicator span {
+  animation: pulse 1.4s infinite;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+  background: #667eea;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* MOBILE MENU SUPPORT */
+@media (max-width: 768px) {
+  body {
+    padding: 0;
+    margin: 0;
+  }
+
+  input, button, textarea {
+    font-size: 16px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  nav {
+    padding: 0 16px !important;
+  }
+
+  .navContent {
+    height: 60px !important;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .navButtons {
+    gap: 4px !important;
+    display: flex;
+  }
+
+  .navBtn {
+    padding: 8px 12px !important;
+    font-size: 12px !important;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  .inputBox {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  input {
+    width: 100%;
+    min-width: 100% !important;
+    min-height: 44px !important;
+    padding: 12px !important;
+  }
+
+  button {
+    min-height: 44px !important;
+    min-width: 44px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .message {
+    max-width: 90% !important;
+  }
+
+  .chatBox {
+    height: 350px !important;
+    min-height: 300px;
+  }
+
+  .card {
+    padding: 20px !important;
+    margin: 0 !important;
+  }
+
+  .mainContent {
+    padding: 20px 16px !important;
+    margin: 0 !important;
+  }
+
+  .aboutBox {
+    padding: 24px !important;
+    margin: 0 !important;
+  }
+
+  .aboutTitle {
+    font-size: 24px !important;
+  }
+
+  .cardTitle {
+    font-size: 18px !important;
+  }
+
+  .buttonGroup {
+    grid-template-columns: 1fr !important;
+    gap: 10px;
+  }
+
+  .featureGrid {
+    grid-template-columns: 1fr !important;
+    gap: 12px;
+  }
+
+  .grid {
+    gap: 16px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .logoText {
+    display: none;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  nav {
+    padding: 0 12px !important;
+  }
+
+  input {
+    padding: 12px !important;
+    font-size: 16px !important;
+    min-height: 44px !important;
+  }
+
+  button {
+    padding: 12px !important;
+    font-size: 14px !important;
+    min-height: 44px !important;
+    min-width: 44px !important;
+  }
+
+  .navBtn {
+    padding: 8px 12px !important;
+    font-size: 12px !important;
+    min-height: 44px !important;
+  }
+
+  .primaryBtn {
+    padding: 12px 16px !important;
+    font-size: 14px !important;
+    min-height: 44px !important;
+  }
+
+  .secondaryBtn {
+    padding: 12px 16px !important;
+    font-size: 14px !important;
+    min-height: 44px !important;
+  }
+
+  .autoBtn {
+    padding: 12px 14px !important;
+    font-size: 18px !important;
+    min-height: 44px !important;
+    min-width: 44px !important;
+  }
+
+  .message {
+    padding: 12px 14px !important;
+    max-width: 95% !important;
+    font-size: 14px !important;
+    border-radius: 10px;
+  }
+
+  .messageTime {
+    font-size: 11px !important;
+  }
+
+  .messageText {
+    font-size: 14px !important;
+  }
+
+  .chatBox {
+    height: 320px !important;
+    padding: 12px !important;
+  }
+
+  .card {
+    padding: 18px !important;
+    border-radius: 12px;
+    margin: 0 !important;
+  }
+
+  .cardTitle {
+    font-size: 17px !important;
+  }
+
+  .cardSubtitle {
+    font-size: 13px !important;
+  }
+
+  .cardHeader {
+    margin-bottom: 18px !important;
+  }
+
+  .statusBox {
+    padding: 14px !important;
+  }
+
+  .dataBox {
+    padding: 14px !important;
+  }
+
+  .data {
+    font-size: 12px !important;
+    padding: 10px !important;
+  }
+
+  .mainContent {
+    padding: 16px 12px !important;
+    margin: 0 !important;
+  }
+
+  .aboutBox {
+    padding: 18px !important;
+    margin: 0 !important;
+  }
+
+  .aboutContainer {
+    padding: 16px 12px !important;
+  }
+
+  .aboutHeader {
+    margin-bottom: 20px !important;
+    padding-bottom: 16px !important;
+  }
+
+  .aboutTitle {
+    font-size: 22px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .aboutSubtitle {
+    font-size: 13px !important;
+  }
+
+  .sectionTitle {
+    font-size: 17px !important;
+  }
+
+  .sectionText {
+    font-size: 13px !important;
+  }
+
+  .featureBox {
+    padding: 16px !important;
+  }
+
+  .featureTitle {
+    font-size: 15px !important;
+  }
+
+  .featureText {
+    font-size: 13px !important;
+  }
+
+  .stepsList {
+    padding-left: 16px !important;
+  }
+
+  .stepItem {
+    font-size: 13px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .inputBox {
+    gap: 8px !important;
+  }
+
+  .grid {
+    gap: 14px !important;
+  }
+
+  .buttonGroup {
+    gap: 8px !important;
+  }
+}
+
+/* Ultra small devices */
+@media (max-width: 360px) {
+  .logo {
+    font-size: 18px;
+  }
+
+  .logoIcon {
+    font-size: 20px !important;
+  }
+
+  .navBtn {
+    padding: 6px 10px !important;
+    font-size: 11px !important;
+  }
+
+  input, button {
+    font-size: 15px !important;
+  }
+
+  .cardTitle {
+    font-size: 16px !important;
+  }
+
+  .aboutTitle {
+    font-size: 20px !important;
+  }
+
+  .sectionTitle {
+    font-size: 16px !important;
+  }
+}
