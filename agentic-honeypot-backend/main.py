@@ -74,7 +74,7 @@ def analyze_message_with_gemini(text: str, history: list):
     
     try:
         response = gemini_client.models.generate_content(
-            model='gemini-2.5-flash',
+            model='gemini-2.5-flash-lite',
             contents=prompt,
             config=types.GenerateContentConfig(
                 response_mime_type="application/json",
@@ -104,7 +104,8 @@ def generate_agent_reply(text: str, history: list, extracted_intel: dict):
     chat_history = []
     for msg in history:
         # Avoid passing empty text or improperly structured history
-        msg_text = msg.get("text", "").strip()
+        msg_text = msg.get("text") or ""
+        msg_text = msg_text.strip()
         if not msg_text: continue
         role = "model" if msg.get("sender") == "agent" else "user"
         chat_history.append({"role": role, "parts": [{"text": msg_text}]})
@@ -113,7 +114,7 @@ def generate_agent_reply(text: str, history: list, extracted_intel: dict):
     
     try:
         response = gemini_client.models.generate_content(
-            model='gemini-2.5-flash',
+            model='gemini-2.5-flash-lite',
             contents=chat_history,
             config=types.GenerateContentConfig(
                 system_instruction=system_instruction,
@@ -291,7 +292,7 @@ Keep it formal, professional and ready to submit to cybercell.gov.in
 
     try:
         response = gemini_client.models.generate_content(
-            model="gemini-2.5-flash",
+            model="gemini-2.5-flash-lite",
             contents=prompt
         )
         fir_text = response.text
